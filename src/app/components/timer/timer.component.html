@@ -1,0 +1,8 @@
+<div *ngIf="timer">
+<h3>Timer {{timer.id}}</h3>
+<label>Label</label><br/>
+<input type="text" id="timerLabel" [(ngModel)]="timer.label" /><br/><br/>
+<label>Duration</label><br/>
+<input type="number" id="timerNumber" [(ngModel)]="timer.duration" /><br/>
+<button type="button" class="btn btn-outline-primary mt-4" (click)="updateTimer()">Update</button>
+</div>

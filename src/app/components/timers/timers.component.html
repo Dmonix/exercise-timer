@@ -1,0 +1,48 @@
+<div class="progress">
+    <div class="progress-bar bg-info" role="progressbar" style="width: 40%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar bg-warning" role="progressbar" style="width: 20%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar bg-info" role="progressbar" style="width: 40%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<table class="table table-hover mt-2">
+    <thead class="theader">
+        <tr>
+            <th class="col-2">
+                ID
+            </th>
+            <th>
+                Label
+            </th>
+            <th class="col-2">
+                Duration (s)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let timer of timers" (click)="viewTimer(timer.id)">
+            <td>{{timer.id}}</td>
+            <td>{{timer.label}}</td>
+            <td>{{timer.duration}}</td>
+        </tr>
+    </tbody>
+</table>
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="addNewTimerModal" (click)="open(addNewTimerModal)">Add Timer</button>
+
+<ng-template #addNewTimerModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add new Timer</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3">
+                <label for="label">Label</label>
+                <input id="label" class="form-control" placeholder="Description" type="text" [(ngModel)]="newTimer.label" name="label" />
+                <label for="duration">Duration</label>
+                <input id="duration" class="form-control" placeholder="Description" type="number" [(ngModel)]="newTimer.duration" name="duration" />
+            </div>
+        </form>
+    </div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close(newTimer)">Save</button>
+	</div>
+</ng-template>
